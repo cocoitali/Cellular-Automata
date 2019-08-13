@@ -43,8 +43,14 @@ while not done:
     screen.fill(GRAY)
  
     # --- Drawing code should go here
-    pygame.draw.rect(screen, WHITE, pygame.Rect(200, 200, 100, 100))
+    x = 5
 
+    while x < 500:
+        y = 5 
+        while y < 500: 
+            pygame.draw.rect(screen, WHITE, pygame.Rect(x, y, 20, 20))
+            y += 25
+        x += 25
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
  
