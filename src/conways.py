@@ -6,6 +6,13 @@ WHITE = (255, 255, 255)
 GRAY = (25, 25, 25)
 WIN_SIZE = 500
 
+# 1. Create a set of initial states with simple pattern (Ex. blinker)
+cur_states= [] 
+# cur_states[10] = 1 # more current states, to test
+# cur_states[30] = 1
+# cur_states[50] = 1
+next_state = [] 
+
 pygame.init()
  
 # Set the width and height of the screen [width, height]
@@ -35,6 +42,8 @@ while not done:
 # Any live cell with more than three live neighbours dies, as if by overpopulation.
 # Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
+# 3. Work on rules that i) look at all neighbors, ii) save new state
+# in next_states[] 
  
     # --- Screen-clearing code goes here
  
@@ -43,12 +52,20 @@ while not done:
     screen.fill(GRAY)
  
     # --- Drawing code should go here
+    cur_index = 0
     x = 5
-
     while x < 500:
         y = 5 
         while y < 500: 
-            pygame.draw.rect(screen, WHITE, pygame.Rect(x, y, 20, 20))
+            # 2. Draw based on values in cur_states
+            state = cur_states[cur_index]
+            # 4. Draw based on values in next_states
+            if state == 0:
+
+                pygame.draw.rect(screen, BLACK, pygame.Rect(x, y, 20, 20))
+            else:
+                pygame.draw.rect(screen, WHITE, pygame.Rect(x, y, 20, 20))
+            cur_index += 1
             y += 25
         x += 25
     # --- Go ahead and update the screen with what we've drawn.
